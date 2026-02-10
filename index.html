@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERP PRO | تسجيل الدخول</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot">ERP</div>
+        <div>
+          <h1>ERP PRO</h1>
+          <div class="badge">تسجيل الدخول</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <div class="card-header"><h2 class="card-title">دخول</h2></div>
+        <div class="card-body">
+          <div class="section-title">اسم المستخدم</div>
+          <input id="username" class="input" placeholder="admin" autocomplete="username">
+          <div style="height:10px"></div>
+          <div class="section-title">كلمة المرور</div>
+          <input id="password" class="input" type="password" placeholder="admin123" autocomplete="current-password">
+          <div style="height:12px"></div>
+          <button id="btn" class="btn primary block" onclick="erpLogin()">دخول</button>
+          <div id="msg" class="notice" style="display:none;margin-top:12px"></div>
+          <div style="height:10px"></div>
+          <div class="notice ok">✅ Admin الافتراضي: admin / admin123</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><h2 class="card-title">تشغيل سريع</h2></div>
+        <div class="card-body">
+          <div class="notice">
+            1) فعّل Email/Password في Firebase Auth<br>
+            2) أنشئ المستخدم admin في Authentication: admin@erp-pro.local / admin123<br>
+            3) أنشئ users/admin في Firestore<br>
+            4) ضع Rules من صفحة (إعداد Firebase) داخل البرنامج
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">import "./pwa/register-sw.js";</script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>
