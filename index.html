@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ERP PRO | تسجيل الدخول</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot"></div>
+        <div>
+          <h1>ERP PRO</h1>
+          <div class="badge">نظام محاسبي + تصنيع</div>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn ghost" href="#" onclick="return false">PWA</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">تسجيل الدخول</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div>
+              <div class="section-title">اسم المستخدم</div>
+              <input id="username" class="input" placeholder="مثال: admin" autocomplete="username" />
+            </div>
+          </div>
+          <div style="height:10px"></div>
+          <div class="row">
+            <div>
+              <div class="section-title">كلمة المرور</div>
+              <input id="password" class="input" type="password" placeholder="••••••••" autocomplete="current-password" />
+            </div>
+          </div>
+
+          <div style="height:12px"></div>
+          <button id="btn" class="btn primary" style="width:100%" onclick="erpLogin()">
+            دخول
+          </button>
+
+          <div id="msg" class="notice" style="display:none; margin-top:12px"></div>
+
+          <hr class="sep">
+          <div class="muted">
+            تسجيل الدخول يستخدم Username للمستخدم، وداخليًا يتم تحويله إلى Auth (Email افتراضي) لضمان الأمان مع Firestore Production Mode.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">ملاحظات مهمة</h2>
+        </div>
+        <div class="card-body">
+          <div class="notice">
+            ✅ هذا إصدار (Starter) لضبط Firebase + الصلاحيات + واجهة احترافية. سيتم بناء كل الشاشات والتقارير ضمن النسخة النهائية ZIP.
+          </div>
+          <div style="height:10px"></div>
+          <div class="notice">
+            إذا كان لديك Admin في Authentication: <b>admin@erp-pro.local</b> وكلمة المرور <b>admin123</b> فستدخل مباشرة.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer container">ERP PRO ©</div>
+
+  <script type="module">
+    import "./pwa/register-sw.js";
+  </script>
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>
