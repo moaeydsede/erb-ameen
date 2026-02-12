@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERP PRO | المواد والمخزون</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot">ERP</div>
+        <div style="min-width:0">
+          <h1>ERP PRO</h1>
+          <div class="badge">التصنيع</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="chip">مستخدم: <b id="userChip">—</b></span>
+        <a class="btn sm" href="dashboard.html">الرئيسية</a>
+        <button class="btn sm danger" id="logoutBtn">خروج</button>
+      </div>
+    </div>
+    <div class="nav-groups" id="groups"></div>
+  </div>
+
+  <div class="container"><div class="grid">
+  <div class="card"><div class="card-header"><h2 class="card-title">إضافة/تعديل مادة</h2></div><div class="card-body">
+    <div id="msg" class="notice" style="display:none"></div>
+    <div class="row"><div><div class="section-title">SKU</div><input id="sku" class="input" placeholder="ITEM-001"></div><div><div class="section-title">اسم</div><input id="name" class="input"></div></div>
+    <div style="height:12px"></div><button id="saveItemBtn" class="btn primary block">حفظ</button>
+    <hr class="sep"><div class="section-title">بحث مواد</div><input id="qItem" class="input" placeholder="ابحث بالاسم أو SKU">
+  </div></div>
+  <div class="card"><div class="card-header"><h2 class="card-title">المواد (جرد + متوسط تكلفة)</h2></div><div class="card-body">
+    <table class="table"><thead><tr><th>SKU</th><th>المادة</th><th>الرصيد</th><th>متوسط تكلفة</th><th>إجراء</th></tr></thead><tbody id="itemsRows"></tbody></table>
+  </div></div>
+</div>
+<div style="height:14px"></div>
+<div class="card"><div class="card-header"><h2 class="card-title">حركة مادة</h2></div><div class="card-body">
+  <div class="row"><div><div class="section-title">التاريخ</div><input id="date" class="input" type="date"></div><div><div class="section-title">اليوم</div><div class="chip" id="day">—</div></div><div><div class="section-title">المادة</div><select id="moveItem" class="input"></select></div><div><div class="section-title">النوع</div><select id="moveType" class="input"><option value="in">دخول</option><option value="out">خروج</option></select></div></div>
+  <div style="height:10px"></div>
+  <div class="row"><div><div class="section-title">الكمية</div><input id="qty" class="input" type="number" step="0.01" value="1"></div><div><div class="section-title">تكلفة الوحدة (للدخول)</div><input id="unitCost" class="input" type="number" step="0.01" value="0"></div><div><div class="section-title">ملاحظة</div><input id="note" class="input"></div></div>
+  <div style="height:12px"></div><button id="saveMoveBtn" class="btn ok block">حفظ الحركة</button>
+</div></div>
+<div style="height:14px"></div>
+<div class="card"><div class="card-header"><h2 class="card-title">سجل الحركة</h2></div><div class="card-body">
+  <table class="table"><thead><tr><th>التاريخ</th><th>اليوم</th><th>المادة</th><th>نوع</th><th>كمية</th><th>تكلفة</th><th>بيان</th></tr></thead><tbody id="movesRows"></tbody></table>
+</div></div>
+</div>
+
+  <nav class="bottom-nav" id="bottomNav"></nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="menu" id="menu">
+    <div class="head">
+      <h3 class="title" id="menuTitle">—</h3>
+      <button class="btn sm iconbtn" id="menuClose" title="إغلاق">✕</button>
+    </div>
+    <div class="body" id="menuBody"></div>
+  </div>
+
+  <script type="module">import "./pwa/register-sw.js";</script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/inventory.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</body>
+</html>

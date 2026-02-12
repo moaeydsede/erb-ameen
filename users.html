@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERP PRO | المستخدمين والصلاحيات</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot">ERP</div>
+        <div style="min-width:0">
+          <h1>ERP PRO</h1>
+          <div class="badge">Admin فقط</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="chip">مستخدم: <b id="userChip">—</b></span>
+        <a class="btn sm" href="dashboard.html">الرئيسية</a>
+        <button class="btn sm danger" id="logoutBtn">خروج</button>
+      </div>
+    </div>
+    <div class="nav-groups" id="groups"></div>
+  </div>
+
+  <div class="container"><div class="grid">
+<div class="card"><div class="card-header"><h2 class="card-title">إضافة/تعديل مستخدم</h2></div><div class="card-body">
+<div id="msg" class="notice" style="display:none"></div>
+<div class="notice ok">✅ تحدد الصلاحيات من داخل البرنامج (تظهر/تخفي الأزرار لكل مستخدم).</div>
+<div id="authNote"></div>
+<hr class="sep">
+<div class="section-title">اسم المستخدم</div><input id="username" class="input" placeholder="user1">
+<div style="height:10px"></div>
+<div class="row">
+  <div><div class="section-title">الدور</div><select id="role" class="input"><option value="viewer">Viewer</option><option value="sales">Sales</option><option value="accountant">Accountant</option><option value="warehouse">Warehouse</option><option value="admin">Admin</option></select></div>
+  <div><div class="section-title">قالب صلاحيات سريع</div><select id="template" class="input"><option value="">— اختر قالب —</option><option value="viewer">Viewer</option><option value="sales">Sales</option><option value="accountant">Accountant</option><option value="warehouse">Warehouse</option><option value="admin_all">Admin All</option></select></div>
+</div>
+<div style="height:10px"></div><label class="chip"><input id="active" type="checkbox" checked> تفعيل المستخدم</label>
+<hr class="sep">
+<div class="section-title">الصلاحيات</div>
+<div class="row">
+  <label class="chip"><input type="checkbox" id="p_company"> بيانات الشركة</label>
+  <label class="chip"><input type="checkbox" id="p_accounts"> حسابات</label>
+  <label class="chip"><input type="checkbox" id="p_invoices"> فواتير</label>
+  <label class="chip"><input type="checkbox" id="p_manufacturing"> تصنيع/مخزون</label>
+  <label class="chip"><input type="checkbox" id="p_vouchers"> سندات</label>
+  <label class="chip"><input type="checkbox" id="p_reports"> تقارير</label>
+  <label class="chip"><input type="checkbox" id="p_cfo"> CFO</label>
+</div>
+<div style="height:12px"></div>
+<div class="row"><button id="saveBtn" class="btn primary block">حفظ</button><button id="resetBtn" class="btn block">تفريغ</button></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h2 class="card-title">قائمة المستخدمين</h2></div><div class="card-body">
+<table class="table"><thead><tr><th>المستخدم</th><th>الدور</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="rows"></tbody></table>
+</div></div>
+</div></div>
+
+  <nav class="bottom-nav" id="bottomNav"></nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="menu" id="menu">
+    <div class="head">
+      <h3 class="title" id="menuTitle">—</h3>
+      <button class="btn sm iconbtn" id="menuClose" title="إغلاق">✕</button>
+    </div>
+    <div class="body" id="menuBody"></div>
+  </div>
+
+  <script type="module">import "./pwa/register-sw.js";</script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/users.js"></script>
+</body>
+</html>
