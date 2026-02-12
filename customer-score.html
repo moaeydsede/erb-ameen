@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERP PRO | لوحة التحكم</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot">ERP</div>
+        <div style="min-width:0">
+          <h1>ERP PRO</h1>
+          <div class="badge">تقييم العملاء</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="chip">مستخدم: <b id="userChip">—</b></span>
+        <a class="btn sm" href="dashboard.html">الرئيسية</a>
+        <button class="btn sm danger" id="logoutBtn">خروج</button>
+      </div>
+    </div>
+    <div class="nav-groups" id="groups"></div>
+  </div>
+
+  <div class="container">
+<div class="card"><div class="card-header"><h2 class="card-title">تقييم العملاء (تلقائي)</h2></div><div class="card-body">
+  <div class="notice">المعادلة: سداد (70%) + خصومات (20%) + نشاط (10%)</div>
+  <table class="table"><thead><tr><th>العميل</th><th>مبيعات</th><th>مرتجعات</th><th>سداد</th><th>خصم</th><th>نقاط</th><th>نجوم</th></tr></thead><tbody id="rows"></tbody></table>
+</div></div>
+</div>
+
+  <nav class="bottom-nav" id="bottomNav"></nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="menu" id="menu">
+    <div class="head">
+      <h3 class="title" id="menuTitle">—</h3>
+      <button class="btn sm iconbtn" id="menuClose" title="إغلاق">✕</button>
+    </div>
+    <div class="body" id="menuBody"></div>
+  </div>
+
+  <script type="module">import "./pwa/register-sw.js";</script>
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/customer-score.js"></script>
+</body>
+</html>
