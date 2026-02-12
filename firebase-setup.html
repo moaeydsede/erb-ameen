@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERP PRO | إعداد Firebase</title>
+  <link rel="manifest" href="pwa/manifest.json">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="logo-dot">ERP</div>
+        <div style="min-width:0">
+          <h1>ERP PRO</h1>
+          <div class="badge">Admin فقط</div>
+        </div>
+      </div>
+      <div class="actions">
+        <span class="chip">مستخدم: <b id="userChip">—</b></span>
+        <a class="btn sm" href="dashboard.html">الرئيسية</a>
+        <button class="btn sm danger" id="logoutBtn">خروج</button>
+      </div>
+    </div>
+    <div class="nav-groups" id="groups"></div>
+  </div>
+
+  <div class="container"><div class="card"><div class="card-header"><h2 class="card-title">كود Firebase + القواعد</h2></div><div class="card-body">
+<div class="notice ok">هذا كل شيء تحتاجه بعد رفع الملفات على GitHub.</div>
+<hr class="sep">
+<div class="section-title">Firebase Config (داخل js/firebase.js)</div>
+<pre class="notice" style="white-space:pre-wrap;direction:ltr;text-align:left">{
+  "apiKey": "AIzaSyBc-zCwcSNsVupzAAHWeUWKGHLdcrzg2iQ",
+  "authDomain": "erp-pro-7307c.firebaseapp.com",
+  "projectId": "erp-pro-7307c",
+  "storageBucket": "erp-pro-7307c.firebasestorage.app",
+  "messagingSenderId": "481869823115",
+  "appId": "1:481869823115:web:68ea96d2a4ef5b732fa88e"
+}</pre>
+<hr class="sep">
+<div class="section-title">Firestore Rules (انسخ والصق)</div>
+<pre class="notice" style="white-space:pre-wrap;direction:ltr;text-align:left">rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn(){ return request.auth != null; }
+
+    match /users/{id} { allow read, write: if signedIn(); }
+    match /company/{id} { allow read, write: if signedIn(); }
+
+    match /accounts/{id} { allow read, write: if signedIn(); }
+    match /customers/{id} { allow read, write: if signedIn(); }
+    match /suppliers/{id} { allow read, write: if signedIn(); }
+
+    match /items/{id} { allow read, write: if signedIn(); }
+    match /inventoryMoves/{id} { allow read, write: if signedIn(); }
+
+    match /invoices/{id} { allow read, write: if signedIn(); }
+    match /vouchers/{id} { allow read, write: if signedIn(); }
+    match /costCards/{id} { allow read, write: if signedIn(); }
+
+    match /{document=**} { allow read, write: if false; }
+  }
+}</pre>
+<hr class="sep">
+<div class="notice">
+⚠️ إنشاء كلمة مرور المستخدم لا يتم من داخل الموقع لأسباب أمان Firebase.<br>
+لكل مستخدم جديد: أنشئه مرة واحدة في Firebase Authentication:<br>
+Email: <b>username@erp-pro.local</b> + Password تختاره أنت.
+</div>
+</div></div></div>
+
+  <nav class="bottom-nav" id="bottomNav"></nav>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="menu" id="menu">
+    <div class="head">
+      <h3 class="title" id="menuTitle">—</h3>
+      <button class="btn sm iconbtn" id="menuClose" title="إغلاق">✕</button>
+    </div>
+    <div class="body" id="menuBody"></div>
+  </div>
+
+  <script type="module">import "./pwa/register-sw.js";</script>
+  <script type="module" src="js/nav.js"></script>
+
+</body>
+</html>
